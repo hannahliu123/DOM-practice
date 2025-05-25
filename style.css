@@ -1,0 +1,19 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Figtree";
+    background-color: #F8F5F0;
+    color: #0D2F4D;
+    margin: 30px;
+}
+
+#text-container p:hover {
+    cursor: pointer;
+    color: red;
+}
+
+#text-container p:active {
+    color: darkred;
+}
