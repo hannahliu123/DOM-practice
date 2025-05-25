@@ -8,6 +8,7 @@ input.addEventListener('keydown', (event) => {
         const addText = document.createElement('p');
         addText.textContent = input.value;
         textContainer.append(addText);
+        input.value = '';
     }
 });
 
@@ -15,6 +16,7 @@ addButton.addEventListener('click', () => {
     const addText = document.createElement('p');
     addText.textContent = input.value;
     textContainer.append(addText);
+    input.value = '';
 });
 
 textContainer.addEventListener('click', (event) => {
