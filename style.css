@@ -41,3 +41,7 @@ body {
     border-right: 28px solid transparent;
     border-bottom: 50px solid gray;
 }
+
+.shape:hover {
+    cursor: pointer;
+}
