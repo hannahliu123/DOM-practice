@@ -1,22 +1,24 @@
-const input = document.getElementById('text-input');
+const addInput = document.getElementById('text-input');
 const addButton = document.getElementById('add-button');
 const textContainer = document.getElementById('text-container');
 const colorContainer = document.getElementById('change-color-container');
+const charCountInput = document.getElementById('char-count-input');
+const charDisplay = document.getElementById('char-display');
 
-input.addEventListener('keydown', (event) => {
+addInput.addEventListener('keydown', (event) => {
     if (event.key === 'Enter') {
         const addText = document.createElement('p');
-        addText.textContent = input.value;
+        addText.textContent = addInput.value;
         textContainer.append(addText);
-        input.value = '';
+        addInput.value = '';
     }
 });
 
 addButton.addEventListener('click', () => {
     const addText = document.createElement('p');
-    addText.textContent = input.value;
+    addText.textContent = addInput.value;
     textContainer.append(addText);
-    input.value = '';
+    addInput.value = '';
 });
 
 textContainer.addEventListener('click', (event) => {
@@ -29,4 +31,8 @@ colorContainer.addEventListener('click', (event) => {
     if (event.target.classList.contains('shape')) {
         event.target.classList.toggle('active');
     }
+});
+
+charCountInput.addEventListener('input', () => {
+    charDisplay.textContent = 'Characters: ' + charCountInput.value.length;
 });
