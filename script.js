@@ -27,6 +27,6 @@ textContainer.addEventListener('click', (event) => {
 
 colorContainer.addEventListener('click', (event) => {
     if (event.target.classList.contains('shape')) {
-        alert(event.target);    // UNFINISHED
+        event.target.classList.toggle('active');
     }
 });

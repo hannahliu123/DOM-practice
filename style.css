@@ -20,26 +20,32 @@ body {
 
 .shape {
     display: inline-block;
+    background-color: #B89A6A;
     margin-right: 20px;
     height: 50px;
     width: 50px;
 }
 
-#square {
-    background-color: gray;
-}
-
 #circle {
-    background-color: gray;
     border-radius: 50%;
 }
 
 #triangle {
     height: 0;
     width: 0;
+    background-color: transparent;
     border-left: 28px solid transparent;
     border-right: 28px solid transparent;
-    border-bottom: 50px solid gray;
+    border-bottom: 50px solid #B89A6A;
+}
+
+.shape.active {     /* squares & circles */
+    background-color: #785928;
+}
+
+#triangle.active {
+    background-color: transparent;
+    border-bottom-color: #785928;
 }
 
 .shape:hover {
