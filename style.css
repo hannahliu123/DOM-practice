@@ -67,6 +67,7 @@ textarea {
 }
 
 #sleep-hours-container {
+    display: none;
     margin-left: 24px;
 }
 
