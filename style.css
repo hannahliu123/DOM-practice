@@ -88,17 +88,38 @@ textarea {
 }
 
 #points-message.zero{
-    color: #47db0d;
+    color: #47DB0D;
 }
 
 #points-message.one{
-    color: #12cf5b;
+    color: #12CF5B;
 }
 
 #points-message.two{
-    color: #1ec05c;
+    color: #1EC05C;
 }
 
 #points-message.three{
-    color: #1c9048;
+    color: #1C9048;
+}
+
+#item-bank {
+    display: flex;
+    flex-wrap: wrap;
+    border: 1px solid #0D2F4D;
+    padding: 5px;
+    width: 90%;
+    margin-bottom: 40px;
+}
+
+.item {
+    border: 1px solid red;
+    margin: 3px;
+    padding: 4px;
+}
+
+#drop-line {
+    border: 1px solid #0D2F4D;
+    height: 40px;
+    width: 90%;
 }
