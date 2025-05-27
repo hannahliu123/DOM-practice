@@ -4,6 +4,9 @@ const textContainer = document.getElementById('text-container');
 const colorContainer = document.getElementById('change-color-container');
 const charCountInput = document.getElementById('char-count-input');
 const charDisplay = document.getElementById('char-display');
+const checkboxContainer = document.getElementById('checkboxes');
+const pointsDisplay = document.getElementById('habits-points');
+let points = 0;
 
 addInput.addEventListener('keydown', (event) => {
     if (event.key === 'Enter') {
@@ -36,3 +39,5 @@ colorContainer.addEventListener('click', (event) => {
 charCountInput.addEventListener('input', () => {
     charDisplay.textContent = 'Characters: ' + charCountInput.value.length;
 });
+
+

@@ -31,9 +31,40 @@
             <p id="char-display">Characters: 0</p>
         </div>
         <div>
-            <h3>Checkboxes</h3>
-            <input type="checkbox" name="Check 1" id="checkbox1">
-            <label for="checkbox1">Checkbox Numero Uno</label>
+            <h3>Daily Habits Tracker Checkboxes</h3>
+            <p>Based on the different daily habits you have completed, you will earn a certain number of points.</p>
+            <p>Check all the boxes that you have completed so far today:</p>
+            <div id="checkboxes">
+                <div class="habit">
+                    <input type="checkbox" id="make-bed" name="bed">
+                    <label for="make-bed">Make your bed</label>
+                </div>
+                <div class="habit">
+                    <input type="checkbox" id="drink-water" name="water">
+                    <label for="drink-water">Drink water</label>
+                </div>
+                <div class="habit">
+                    <input type="checkbox" id="eat" name="eat">
+                    <label for="eat">Eat food</label>
+                </div>
+                <div class="habit">
+                    <input type="checkbox" id="study" name="study">
+                    <label for="study">Study</label>
+                </div>
+                <div class="habit">
+                    <input type="checkbox" id="exercise" name="exercise">
+                    <label for="exercise">Exercise</label>
+                </div>
+                <div class="habit">
+                    <input type="checkbox" id="brush-teeth" name="teeth">
+                    <label for="brush-teeth">Brush teeth</label>
+                </div>
+                <div class="habit">
+                    <input type="checkbox" id="get-sleep" name="sleep">
+                    <label for="get-sleep">Get sleep</label>
+                </div>
+            </div>
+            <p>Total Points: <span id="habits-points">0</span></p>
         </div>
         <div>
             <h3>Reorder Items</h3>

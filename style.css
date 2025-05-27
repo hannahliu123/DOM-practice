@@ -59,3 +59,9 @@ h3 {
 textarea {
     font-family: 'Figtree', sans-serif;
 }
+
+.habit {
+    display: inline-block;
+    width: 35%;
+    margin: 2px;
+}
