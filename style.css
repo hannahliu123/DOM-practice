@@ -65,3 +65,39 @@ textarea {
     width: 35%;
     margin: 2px;
 }
+
+#sleep-hours-container {
+    margin-left: 24px;
+}
+
+#hours-label {
+    font-size: 0.75rem;
+}
+
+#sleep-hours-input {
+    font-size: 0.75rem;
+    width: 35px;
+    border: none;
+    background-color: transparent;
+}
+
+.points-display {
+    display: inline-block;
+    width: 35%;
+}
+
+#points-message.zero{
+    color: #47db0d;
+}
+
+#points-message.one{
+    color: #12cf5b;
+}
+
+#points-message.two{
+    color: #1ec05c;
+}
+
+#points-message.three{
+    color: #1c9048;
+}

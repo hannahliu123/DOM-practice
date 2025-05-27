@@ -36,35 +36,42 @@
             <p>Check all the boxes that you have completed so far today:</p>
             <div id="checkboxes">
                 <div class="habit">
-                    <input type="checkbox" id="make-bed" name="bed">
+                    <input type="checkbox" id="make-bed" name="bed" data-points="10">
                     <label for="make-bed">Make your bed</label>
                 </div>
                 <div class="habit">
-                    <input type="checkbox" id="drink-water" name="water">
+                    <input type="checkbox" id="drink-water" name="water" data-points="5">
                     <label for="drink-water">Drink water</label>
                 </div>
                 <div class="habit">
-                    <input type="checkbox" id="eat" name="eat">
+                    <input type="checkbox" id="eat" name="eat" data-points="7">
                     <label for="eat">Eat food</label>
                 </div>
                 <div class="habit">
-                    <input type="checkbox" id="study" name="study">
+                    <input type="checkbox" id="study" name="study" data-points="13">
                     <label for="study">Study</label>
                 </div>
                 <div class="habit">
-                    <input type="checkbox" id="exercise" name="exercise">
+                    <input type="checkbox" id="exercise" name="exercise" data-points="15">
                     <label for="exercise">Exercise</label>
                 </div>
                 <div class="habit">
-                    <input type="checkbox" id="brush-teeth" name="teeth">
+                    <input type="checkbox" id="brush-teeth" name="teeth" data-points="8">
                     <label for="brush-teeth">Brush teeth</label>
                 </div>
-                <div class="habit">
-                    <input type="checkbox" id="get-sleep" name="sleep">
+                <div class="habit" id="sleep-container">
+                    <input type="checkbox" id="get-sleep" name="sleep" data-points="12">
                     <label for="get-sleep">Get sleep</label>
+                    <div id="sleep-hours-container">
+                        <label for="sleep-hours-input" id="hours-label">How many hours? </label>
+                        <input type="number" min="1" max="12" id="sleep-hours-input" value="8">
+                    </div>
                 </div>
             </div>
-            <p>Total Points: <span id="habits-points">0</span></p>
+            <div>
+                <p class="points-display">Total Points: <span id="habits-points">0</span></p>
+                <p class="points-display zero" id="points-message">You can do better.</p>
+            </div>
         </div>
         <div>
             <h3>Reorder Items</h3>
