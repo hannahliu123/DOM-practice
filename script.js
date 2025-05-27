@@ -12,9 +12,11 @@ const charDisplay = document.getElementById('char-display');
 
 // ========== Habit Checkboxes ==========
 const checkboxContainer = document.getElementById('checkboxes');
+const sleepCheckbox = document.getElementById('get-sleep');
+const sleepHoursContainer = document.getElementById('sleep-hours-container');
+const sleepHoursInput = document.getElementById('sleep-hours-input');
 const pointsDisplay = document.getElementById('habits-points');
 const pointsMessage = document.getElementById('points-message');
-const sleepHoursContainer = document.getElementById('sleep-hours-container');
 
 // ========== Functions ==========
 function addTextToContainer() {
@@ -25,21 +27,20 @@ function addTextToContainer() {
 }
 
 function updatePointsMessage() {
-    if (totalPoints > 70) {
+    pointsMessage.classList.remove('zero', 'one', 'two', 'three');
+
+    if (totalPoints >= 70) {
         pointsMessage.textContent = 'Amazing Job! Keep it up!';
         pointsMessage.classList.add('three');
     } else if (totalPoints > 40) {
         pointsMessage.textContent = 'You are doing great!';
         pointsMessage.classList.add('two');
-        pointsMessage.classList.remove('three');
     } else if (totalPoints > 15) {
         pointsMessage.textContent = 'Nice Work!';
         pointsMessage.classList.add('one');
-        pointsMessage.classList.remove('two');
     } else {
         pointsMessage.textContent = 'You can do better.';
         pointsMessage.classList.add('zero');
-        pointsMessage.classList.remove('one');
     }
 }
 
@@ -71,13 +72,13 @@ checkboxContainer.addEventListener('change', (event) => {
     if (checkbox.checked) {
         totalPoints += parseInt(checkbox.dataset.points); // Convert string into integer
         if (checkbox.id === 'get-sleep') sleepHoursContainer.style.display = 'block';
-    } else {
-        if (checkbox.type === 'checkbox') {     // not number input
-            totalPoints -= parseInt(checkbox.dataset.points); // Convert string into integer
-            if (checkbox.id === 'get-sleep') sleepHoursContainer.style.display = 'none';
-        }
+    } else if (checkbox.type === 'checkbox') {   // not number input
+        totalPoints -= parseInt(checkbox.dataset.points); // Convert string into integer
+        if (checkbox.id === 'get-sleep') sleepHoursContainer.style.display = 'none';
     }
     
-    pointsDisplay.textContent = totalPoints;    // update points display
+    // update points display
+    if (sleepCheckbox.checked) pointsDisplay.textContent = totalPoints + parseInt(sleepHoursInput.value);
+    else pointsDisplay.textContent = totalPoints;
     updatePointsMessage();
 });
