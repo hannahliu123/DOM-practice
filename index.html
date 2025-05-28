@@ -10,7 +10,7 @@
         <title>DOM Practice</title>
     </head>
     <body>
-        <h1>DOM Practice</h1>
+        <h1 id="top">DOM Practice</h1>
         <div>
             <h3>Add/Remove Text</h3>
             <p>Type something and either click the "Add" button or press 'Enter' to add your text to the screen. Click on any piece of text you have added to remove it.</p>
@@ -20,6 +20,7 @@
         </div>
         <div id="change-color-container">
             <h3>Color Changing Shapes</h3>
+            <p>Tap a shape to see it change colors! (or shades)</p>
             <div id="square" class="shape"></div>
             <div id="circle" class="shape"></div>
             <div id="triangle" class="shape"></div>
@@ -78,20 +79,13 @@
             <p>Items:</p>
             <div id="item-bank">
                 <div class="item" draggable="true">🐈 cat</div>
-                <div class="item" draggable="true">🐎 horse</div>
-                <div class="item" draggable="true">🦆 duck</div>
                 <div class="item" draggable="true">🍎 apple</div>
                 <div class="item" draggable="true">🍇 grapes</div>
-                <div class="item" draggable="true">🥬 lettuce</div>
-                <div class="item" draggable="true">🍋‍🟩 lime</div>
                 <div class="item" draggable="true">🍵 tea</div>
-                <div class="item" draggable="true">💧 water</div>
-                <div class="item" draggable="true">🌞 sun</div>
-                <div class="item" draggable="true">🌈 rainbow</div>
                 <div class="item" draggable="true">❄️ snow</div>
                 <div class="item" draggable="true">💐 flowers</div>
                 <div class="item" draggable="true">💵 money</div>
-                <div class="item" draggable="true">💻 computer</div>
+                <div class="item" draggable="true">💻 laptop</div>
                 <div class="item" draggable="true">🚗 car</div>
                 <div class="item" draggable="true">🍰 cake</div>
                 <div class="item" draggable="true">🍬 candy</div>
@@ -99,7 +93,12 @@
             <p>Rearrange the items above in order from your favorite to least favorite  in the area below:</p>
             <div id="drop-line"></div>
         </div>
-        <!-- Maybe add saving history or light/dark mode later -->
+        <!-- Maybe add saving history, numbering the items, or light/dark mode later -->
+        <footer> <!-- WIP copyright? fix sides-->
+            <p>2025</p>
+            <p>Hannah Liu</p>
+            <p><a href="mailto:hannah.liu2010@gmail.com">Contact</a></p>
+        </footer>
     </body>
     <script src="script.js"></script>
 </html>

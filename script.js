@@ -93,6 +93,29 @@ items.forEach(item => { // add an event listener that stores an item in a variab
     item.addEventListener('dragstart', () => {
         draggedItem = item;
     });
+
+    // allow draggedItem to be dropped over an item
+    item.addEventListener('dragover', (event) => event.preventDefault());
+
+    // draggedItem dropped over an item (position above/below the item)
+    item.addEventListener('drop', (event) => {
+        event.preventDefault();
+        if (draggedItem && draggedItem != item) {   // prevents some weird behavior
+            // calculate whether draggedItem should be dropped before or after the item
+            const mousePos = event.clientY;
+            const bounding = item.getBoundingClientRect();  // returns { top, left, width, height, bottom, right } values
+            const offset = mousePos - bounding.top; // how far down from the top of item until you reach the pointer
+            const middle = bounding.width / 2;  // how far down until you reach the center of item
+
+            if (offset < middle) {  // mouse was above the middle of item
+                item.parentNode.insertBefore(draggedItem, item);
+            } else {    // mouse was below the middle of item
+                item.parentNode.insertBefore(draggedItem, item.nextSibling);
+            }
+            
+            draggedItem = null;
+        };
+    });
 });
 
 // 'dragover' = when item is hovering over a potential drop zone (drop zone receives the dragover event)
@@ -100,14 +123,19 @@ items.forEach(item => { // add an event listener that stores an item in a variab
 dropLine.addEventListener('dragover', (event) => event.preventDefault());
 itemBank.addEventListener('dragover', (event) => event.preventDefault());
 
-dropLine.addEventListener('drop', () => {
+// needed for the first item dropped into empty dropLine (or if it's dropped perfectly inbetween two items)
+dropLine.addEventListener('drop', (event) => {
+    event.preventDefault();     // not needed in this situation, but default is to open the dragged file/element (like dragging a file into a browser)
     if (draggedItem) {  // if there is a valid dragged item (not null)
         dropLine.append(draggedItem);
+        draggedItem = null;     // just in case
     };
 });
     
-itemBank.addEventListener('drop', () => {
+itemBank.addEventListener('drop', (event) => {
+    event.preventDefault();
     if (draggedItem) {
         itemBank.append(draggedItem);
+        draggedItem = null;
     };
 });

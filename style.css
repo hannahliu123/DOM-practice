@@ -6,7 +6,8 @@ body {
     font-family: "Figtree", sans-serif;;
     background-color: #F8F5F0;
     color: #0D2F4D;
-    margin: 30px;
+    padding: 30px;
+    padding-bottom: 0;
 }
 
 h3 {
@@ -113,12 +114,34 @@ textarea {
 }
 
 .item {
-    border: 1px solid red;
-    margin: 3px;
-    padding: 4px;
+    margin: 5px;
+    padding: 6px;
+    width: 100px;
 }
 
 #drop-line {
     border: 1px solid #0D2F4D;
     width: 90%;
+    padding: 0 5px 15px 5px;
+    min-height: 40px;
+    margin-bottom: 50px;
+}
+
+footer {
+    display: flex;
+    justify-content: center;
+    background-color: #EFECE8;
+    padding: 5px;
+}
+
+footer p {
+    margin: 15px;
+}
+
+footer a {
+    color: #0a61ae;
+}
+
+footer a:active {
+    color: #0874d2;
 }
