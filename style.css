@@ -6,8 +6,8 @@ body {
     font-family: "Figtree", sans-serif;;
     background-color: #F8F5F0;
     color: #0D2F4D;
-    padding: 30px;
-    padding-bottom: 0;
+    padding: 15px 35px;
+    margin: 0;
 }
 
 h3 {
@@ -131,11 +131,8 @@ footer {
     display: flex;
     justify-content: center;
     background-color: #EFECE8;
+    margin: -15px -35px;
     padding: 5px;
-}
-
-footer p {
-    margin: 15px;
 }
 
 footer a {

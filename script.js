@@ -114,7 +114,7 @@ items.forEach(item => { // add an event listener that stores an item in a variab
             }
             
             draggedItem = null;
-        };
+        }
     });
 });
 
@@ -129,7 +129,7 @@ dropLine.addEventListener('drop', (event) => {
     if (draggedItem) {  // if there is a valid dragged item (not null)
         dropLine.append(draggedItem);
         draggedItem = null;     // just in case
-    };
+    }
 });
     
 itemBank.addEventListener('drop', (event) => {
@@ -137,5 +137,5 @@ itemBank.addEventListener('drop', (event) => {
     if (draggedItem) {
         itemBank.append(draggedItem);
         draggedItem = null;
-    };
+    }
 });
