@@ -105,7 +105,7 @@ items.forEach(item => { // add an event listener that stores an item in a variab
             const mousePos = event.clientY;
             const bounding = item.getBoundingClientRect();  // returns { top, left, width, height, bottom, right } values
             const offset = mousePos - bounding.top; // how far down from the top of item until you reach the pointer
-            const middle = bounding.width / 2;  // how far down until you reach the center of item
+            const middle = bounding.height / 2;  // how far down until you reach the center of item
 
             if (offset < middle) {  // mouse was above the middle of item
                 item.parentNode.insertBefore(draggedItem, item);
