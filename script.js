@@ -18,6 +18,11 @@ const sleepHoursInput = document.getElementById('sleep-hours-input');
 const pointsDisplay = document.getElementById('habits-points');
 const pointsMessage = document.getElementById('points-message');
 
+// ========== Rearrange Items ==========
+const items = document.querySelectorAll('div.item');
+const itemBank = document.getElementById('item-bank');
+const dropLine = document.getElementById('drop-line');
+
 // ========== Functions ==========
 function addTextToContainer() {
     const addText = document.createElement('p');
@@ -81,4 +86,28 @@ checkboxContainer.addEventListener('change', (event) => {
     if (sleepCheckbox.checked) pointsDisplay.textContent = totalPoints + parseInt(sleepHoursInput.value);
     else pointsDisplay.textContent = totalPoints;
     updatePointsMessage();
+});
+
+let draggedItem = null;
+items.forEach(item => { // add an event listener that stores an item in a variable to be used every it's dragged
+    item.addEventListener('dragstart', () => {
+        draggedItem = item;
+    });
+});
+
+// 'dragover' = when item is hovering over a potential drop zone (drop zone receives the dragover event)
+// the default (not dropping) is prevented, which allows the next event listener ('drop') to function properly
+dropLine.addEventListener('dragover', (event) => event.preventDefault());
+itemBank.addEventListener('dragover', (event) => event.preventDefault());
+
+dropLine.addEventListener('drop', () => {
+    if (draggedItem) {  // if there is a valid dragged item (not null)
+        dropLine.append(draggedItem);
+    };
+});
+    
+itemBank.addEventListener('drop', () => {
+    if (draggedItem) {
+        itemBank.append(draggedItem);
+    };
 });
