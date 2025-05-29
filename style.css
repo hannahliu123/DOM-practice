@@ -155,9 +155,9 @@ footer a:active {
     color: #0874d2;
 }
 
-@media screen and (max-width: 420px) {
+@media screen and (max-width: 430px) {
     body {
-        padding: 5px 15px;
+        padding: 5px 20px;
     }
 
     #char-count-input {
