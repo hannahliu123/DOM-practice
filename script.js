@@ -64,6 +64,7 @@ textContainer.addEventListener('click', (event) => {
 colorContainer.addEventListener('click', (event) => {
     if (event.target.classList.contains('shape')) {
         event.target.classList.toggle('active');
+        alert(window.innerWidth);
     }
 });
 

@@ -134,8 +134,10 @@ textarea {
 footer {
     display: flex;
     justify-content: center;
+    text-align: center;
     background-color: #EFECE8;
     margin: -15px -35px;
+    margin-top: 30px;
     padding: 5px;
 }
 
@@ -145,4 +147,22 @@ footer a {
 
 footer a:active {
     color: #0874d2;
+}
+
+@media screen and (max-width: 510px) {  /* 415 */
+    #char-count-input {
+        width: 100%;
+    }
+
+    .habit {
+        width: 45%;
+    }
+
+    .points-display {
+        width: 48%;
+    }
+
+    #reorder-items {
+        display: none;
+    }
 }
