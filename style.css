@@ -20,6 +20,10 @@ h3 {
     margin-top: 30px;
 }
 
+input, textarea {
+    font-family: 'Figtree', sans-serif;
+}
+
 #text-container p:hover {
     cursor: pointer;
     color: red;
@@ -64,7 +68,6 @@ h3 {
 }
 
 #char-count-input {
-    font-family: 'Figtree', sans-serif;
     width: 80%;
 }
 
@@ -154,7 +157,7 @@ footer a:active {
 
 @media screen and (max-width: 420px) {
     body {
-        padding: 10px 25px;
+        padding: 5px 15px;
     }
 
     #char-count-input {
