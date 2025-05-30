@@ -24,9 +24,10 @@ const itemBank = document.getElementById('item-bank');
 const dropLine = document.getElementById('drop-line');
 
 // ========== Navagation Bar ==========
-const navToggle = document.getElementById('nav-toggle');
 const navMenuContainer = document.getElementById('nav-menu');
-
+const navButtonsContainer = document.getElementById('nav-controls');
+const navToggle = document.getElementById('nav-toggle');
+const themeToggle = document.getElementById('theme-toggle');
 
 
 // ========== Functions ==========
@@ -148,4 +149,12 @@ itemBank.addEventListener('drop', (event) => {
 
 navToggle.addEventListener('click', () => {
     navMenuContainer.classList.toggle('active');
+    navButtonsContainer.classList.toggle('active');
+});
+
+themeToggle.addEventListener('click', (event) => {
+        event.target.classList.toggle('dark');
+    if (event.target.textContent === '🔆') {
+        event.target.textContent = '⚫';
+    } else event.target.textContent = '🔆';
 });

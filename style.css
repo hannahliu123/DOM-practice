@@ -23,7 +23,12 @@ body {
     top: 0;
 }
 
-#nav-bar h1 {
+#nav-left {
+    display: flex;
+    gap: 35px;
+}
+
+#nav-left h1 {
     margin: 0;
 }
 
@@ -34,9 +39,19 @@ body {
 }
 
 #nav-controls button {
-    background-color: white;
+    background-color: #FFFFFF;
     border: none;
     border-radius: 5px;
+    width: 30px;
+    height: 30px;
+}
+
+#nav-controls button:hover {
+    background-color: #F5F5F5;
+}
+
+#nav-controls button:active {
+    background-color: #FFFFFF;
 }
 
 #nav-toggle {
@@ -50,15 +65,13 @@ body {
     list-style: none;
     margin: 0;
     padding: 0;
-    border: 2px solid blue;
 }
 
-#nav-menu li {
-    flex-shrink: 0;
-    border: 2px solid red;
+#nav-menu li.mobile {
+    display: none;
 }
 
-#nav-menu li p{
+#nav-menu li p {
     margin: 0;
 }
 
@@ -86,7 +99,7 @@ body {
 }
 
 section {
-    scroll-margin-top: 110px;   /* accounds for nav bar's space */
+    scroll-margin-top: 87px;   /* accounts for nav bar's space */
 }
 
 h3 {
@@ -237,16 +250,36 @@ footer a:active {
         display: flex;
         flex-direction: column;
         align-items: flex-start;
-        background-color: #EFECE8;
-        padding: 40px;
+        gap: 20px;
+        background-color: #D9D6D2;
+        padding: 30px;
         padding-top: 75px;
+        width: 200px;
         position: absolute;
-        top: 0;
-        right: 0;
+        top: 6px;
+        right: 15px;
+        border-radius: 10px;
     }
 
-    #nav-menu.active li p {
+    #nav-controls.active button {
+        background-color: #F5F5F5;
+    }
+
+    #nav-controls.active button:hover {
+        background-color: #E9E9E9;
+    }
+
+    #nav-controls.active button:active {
+        background-color: #F5F5F5;
+    }
+
+    #nav-menu.active li.desktop {
         display: none;
+    }
+
+    #nav-menu.active li.mobile {
+        display: block;
+        font-size: 1.1rem;
     }
 }
 
