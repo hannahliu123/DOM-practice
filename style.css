@@ -12,6 +12,11 @@ body {
     margin: 0;
 }
 
+body.dark-mode {
+    background-color: #0D2F4D;
+    color: #F8F5F0;
+}
+
 #nav-bar {
     position: sticky;
     display: flex;
@@ -44,6 +49,7 @@ body {
     border-radius: 5px;
     width: 30px;
     height: 30px;
+    text-align: center;
 }
 
 #nav-controls button:hover {

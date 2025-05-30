@@ -153,7 +153,7 @@ navToggle.addEventListener('click', () => {
 });
 
 themeToggle.addEventListener('click', (event) => {
-        event.target.classList.toggle('dark');
+        document.body.classList.toggle('dark-mode');
     if (event.target.textContent === '🔆') {
         event.target.textContent = '⚫';
     } else event.target.textContent = '🔆';
