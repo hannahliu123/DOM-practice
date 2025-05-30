@@ -4,7 +4,7 @@ const addButton = document.getElementById('add-button');
 const textContainer = document.getElementById('text-container');
 
 // ========== Shapes Color Section ==========
-const colorContainer = document.getElementById('change-color-container');
+const colorContainer = document.getElementById('change-color');
 
 // ========== Character Counter ==========
 const charCountInput = document.getElementById('char-count-input');
@@ -22,6 +22,11 @@ const pointsMessage = document.getElementById('points-message');
 const items = document.querySelectorAll('div.item');
 const itemBank = document.getElementById('item-bank');
 const dropLine = document.getElementById('drop-line');
+
+// ========== Navagation Bar ==========
+const navToggle = document.getElementById('nav-toggle');
+const navMenuContainer = document.getElementById('nav-menu');
+
 
 // ========== Functions ==========
 function addTextToContainer() {
@@ -138,4 +143,8 @@ itemBank.addEventListener('drop', (event) => {
         itemBank.append(draggedItem);
         draggedItem = null;
     }
+});
+
+navToggle.addEventListener('click', () => {
+    navMenuContainer.classList.toggle('active');
 });

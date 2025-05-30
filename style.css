@@ -8,19 +8,77 @@ body {
     font-family: "Figtree", sans-serif;;
     background-color: #F8F5F0;
     color: #0D2F4D;
-    padding: 15px 35px;
+    padding: 0 35px;
     margin: 0;
 }
 
-h1 {
-    font-size: 2.5rem;
+#nav-bar {
+    position: sticky;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #E8E5E1;
+    padding: 20px 30px;
+    margin: 0 -35px;
+    top: 0;
+}
+
+#nav-bar h1 {
+    margin: 0;
+}
+
+#nav-controls {  /* stores buttons */
+    display: flex;
+    gap: 10px;
+    z-index: 0;
+}
+
+#nav-controls button {
+    background-color: white;
+    border: none;
+    border-radius: 5px;
+}
+
+#nav-toggle {
+    display: none;
+}
+
+#nav-menu { /* stores links that jump to content */
+    display: flex;
+    gap: 10px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+#nav-menu li a {
+    color: #163C5E;
+    text-decoration: none;
+}
+
+#nav-menu li a:hover {
+    color: #3F6A91;
+}
+
+#nav-menu li a:active {
+    color: #7CA2C4;
+}
+
+#nav-bar button:hover,
+#add-button:hover,
+.shape:hover,
+.habit:hover,
+.habit input:hover,
+.habit label:hover,
+.item {
+    cursor: pointer;
 }
 
 h3 {
-    margin-top: 30px;
+    padding-top: 15px;
 }
 
-input, textarea {
+input, textarea, button {
     font-family: 'Figtree', sans-serif;
 }
 
@@ -61,10 +119,6 @@ input, textarea {
 #triangle.active {
     background-color: transparent;
     border-bottom-color: #785928;
-}
-
-.shape:hover {
-    cursor: pointer;
 }
 
 #char-count-input {
@@ -148,11 +202,32 @@ footer {
 }
 
 footer a {
-    color: #0a61ae;
+    color: #3F6A91;
 }
 
 footer a:active {
-    color: #0874d2;
+    color: #7CA2C4;
+}
+
+@media screen and (max-width: 870px) {
+    #nav-toggle {
+        display: block;
+    }
+
+    #nav-menu {
+        display: none;
+    }
+
+    #nav-menu.active {
+        display: flex;
+        flex-direction: column;
+        background-color: #EFECE8;
+        padding: 40px;
+        padding-top: 75px;
+        position: absolute;
+        top: 0;
+        right: 0;
+    }
 }
 
 @media screen and (max-width: 430px) {
@@ -172,7 +247,7 @@ footer a:active {
         width: 48%;
     }
 
-    #reorder-items {    /* drag & drop doesn't work on mobile */
+    .reorder-items {    /* drag & drop doesn't work on mobile */
         display: none;
     }
 }
