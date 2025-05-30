@@ -14,13 +14,13 @@
             <h1>Enter the DOM</h1>
             <ul id="nav-menu">
                 <li><a href="#add-remove-text">Text</a></li>
-                <li>-</li>
+                <li><p>-</p></li>
                 <li><a href="#change-color">Shapes</a></li>
-                <li>-</li>
+                <li><p>-</p></li>
                 <li><a href="#character-count">Character Counter</a></li>
-                <li>-</li>
+                <li><p>-</p></li>
                 <li><a href="#habits-tracker">Habits Tracker</a></li>
-                <li>-</li>
+                <li><p>-</p></li>
                 <li><a href="#reorder-items" class="reorder-items">Reorder Items</a></li>
             </ul>
             <div id="nav-controls">
@@ -28,27 +28,27 @@
                 <button id="nav-toggle">☰</button>
             </div>
         </nav>
-        <div id="add-remove-text">
+        <section id="add-remove-text">
             <h3>Add/Remove Text</h3>
             <p>Type something and either click the "Add" button or press 'Enter' to add your text to the screen. Click on any piece of text you have added to remove it.</p>
             <input type="text" placeholder="Enter Here" id="text-input">
             <button id="add-button">Add</button>
             <div id="text-container"></div>
-        </div>
-        <div id="change-color">
+        </section>
+        <section id="change-color">
             <h3>Color Changing Shapes</h3>
             <p>Tap a shape to see it change colors! (or shades)</p>
             <div id="square" class="shape"></div>
             <div id="circle" class="shape"></div>
             <div id="triangle" class="shape"></div>
-        </div>
-        <div id="character-count">
+        </section>
+        <section id="character-count">
             <h3>Character Counter</h3>
             <p>Type anything, and this program will display the number of characters you have used below.</p>
             <textarea placeholder="Enter Here" name="paragraph" id="char-count-input" rows="5" cols="70"></textarea>
             <p id="char-display">Characters: 0</p>
-        </div>
-        <div id="habits-tracker">
+        </section>
+        <section id="habits-tracker">
             <h3>Daily Habits Tracker Checkboxes</h3>
             <p>Based on the different daily habits you have completed today, you will earn a certain number of points.</p>
             <p>Check all the boxes that you have completed so far today:</p>
@@ -90,8 +90,8 @@
                 <p class="points-display">Total Points: <span id="habits-points">0</span></p>
                 <p class="points-display zero" id="points-message">You can do better.</p>
             </div>
-        </div>
-        <div id="reorder-items" class="reorder-items">
+        </section>
+        <section id="reorder-items" class="reorder-items">
             <h3>Reorder Items</h3>
             <p>Items:</p>
             <div id="item-bank">
@@ -109,7 +109,7 @@
             </div>
             <p>Rearrange the items above in order from your favorite to least favorite  in the area below:</p>
             <div id="drop-line"></div>
-        </div>
+        </section>
         <!-- Maybe add saving history or light/dark mode later -->
         <footer>
             <p>© 2025 Hannah Liu. Licensed under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> • Version 1.0 • <a href="mailto:hannah.liu2010@gmail.com">Contact</a></p>

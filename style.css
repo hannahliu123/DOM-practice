@@ -45,10 +45,21 @@ body {
 
 #nav-menu { /* stores links that jump to content */
     display: flex;
+    align-items: center;
     gap: 10px;
     list-style: none;
     margin: 0;
     padding: 0;
+    border: 2px solid blue;
+}
+
+#nav-menu li {
+    flex-shrink: 0;
+    border: 2px solid red;
+}
+
+#nav-menu li p{
+    margin: 0;
 }
 
 #nav-menu li a {
@@ -72,6 +83,10 @@ body {
 .habit label:hover,
 .item {
     cursor: pointer;
+}
+
+section {
+    scroll-margin-top: 110px;   /* accounds for nav bar's space */
 }
 
 h3 {
@@ -221,12 +236,17 @@ footer a:active {
     #nav-menu.active {
         display: flex;
         flex-direction: column;
+        align-items: flex-start;
         background-color: #EFECE8;
         padding: 40px;
         padding-top: 75px;
         position: absolute;
         top: 0;
         right: 0;
+    }
+
+    #nav-menu.active li p {
+        display: none;
     }
 }
 

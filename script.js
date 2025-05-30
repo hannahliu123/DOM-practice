@@ -28,6 +28,7 @@ const navToggle = document.getElementById('nav-toggle');
 const navMenuContainer = document.getElementById('nav-menu');
 
 
+
 // ========== Functions ==========
 function addTextToContainer() {
     const addText = document.createElement('p');
