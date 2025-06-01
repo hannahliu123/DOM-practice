@@ -14,8 +14,8 @@
     --nav-list-text: #163C5E;
     --link-hover: #3F6A91;
     --link-active: #7CA2C4;
-    --remove-text-hover: red;
-    --remove-text-active: darkred;
+    --remove-text-hover: #D17069;
+    --remove-text-active: #99504D;
     --shape-color: #B89A6A;
     --shape-active: #785928;
     --points-0: #8DC47C;
@@ -28,22 +28,22 @@
 
 body.dark-mode {
     --bg-color: #052642;
-    --text-color: #F8F5F0;
+    --text-color: #F1EFE9;
     --nav-bg: #042038;
-    --nav-btn: #FFFFFF;
-    --nav-btn-hover: #F5F5F5;
-    --nav-btn-darker: #E9E9E9;
+    --nav-btn: #F5F5F5;
+    --nav-btn-hover: #DDDDDD;
+    --nav-btn-darker: #BBBBBB;
     --nav-list-text: #F8F5F0;
     --link-hover: #7CA2C4;
     --link-active: #85AFD4;
-    --remove-text-hover: red;
-    --remove-text-active: darkred;
-    --shape-color: #B89A6A;
-    --shape-active: #785928;
-    --points-0: #47DB0D;
-    --points-1: #12CF5B;
-    --points-2: #1EC05C;
-    --points-3: #1C9048;
+    --remove-text-hover: #C94942;
+    --remove-text-active: #913530;
+    --shape-color: #0E63AD;
+    --shape-active: #0B4C85;
+    --points-0: #407330;
+    --points-1: #4A8739;
+    --points-2: #4A8739;
+    --points-3: #54973F;
     --footer-bg: #0F3454;
     --dropdown-bg: #073D6B;
 }
