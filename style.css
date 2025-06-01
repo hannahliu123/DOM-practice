@@ -40,10 +40,10 @@ body.dark-mode {
     --remove-text-active: #913530;
     --shape-color: #0E63AD;
     --shape-active: #0B4C85;
-    --points-0: #407330;
-    --points-1: #4A8739;
-    --points-2: #4A8739;
-    --points-3: #54973F;
+    --points-0: #4A8739;
+    --points-1: #54973F;
+    --points-2: #63B24B;
+    --points-3: #6CC251;
     --footer-bg: #0F3454;
     --dropdown-bg: #073D6B;
 }
@@ -135,6 +135,7 @@ body {
 
 #nav-bar button:hover,
 #add-button:hover,
+#text-container p:hover,
 .shape:hover,
 .habit:hover,
 .habit input:hover,
@@ -153,10 +154,23 @@ h3 {
 
 input, textarea, button {
     font-family: 'Figtree', sans-serif;
+    border: 1px solid var(--text-color);
+    border-radius: 3px;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    padding: 5px;
+}
+
+input::placeholder, 
+textarea::placeholder {
+    color: var(--text-color);
+}
+
+#add-button:hover {
+    background-color: var();
 }
 
 #text-container p:hover {
-    cursor: pointer;
     color: var(--remove-text-hover);
 }
 
@@ -241,13 +255,21 @@ input, textarea, button {
     color: var(--points-3);
 }
 
-#item-bank {
-    display: flex;
-    flex-wrap: wrap;
+#item-bank, #drop-line {
     border: 1px solid var(--text-color);
+    border-radius: 4px;
     padding: 5px;
     width: 90%;
     margin-bottom: 40px;
+}
+
+#item-bank {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+#drop-line {
+    min-height: 40px;
 }
 
 .item {
@@ -256,21 +278,13 @@ input, textarea, button {
     width: 100px;
 }
 
-#drop-line {
-    border: 1px solid var(--text-color);
-    width: 90%;
-    padding: 5px;
-    min-height: 40px;
-    margin-bottom: 50px;
-}
-
 footer {
     display: flex;
     justify-content: center;
     text-align: center;
     background-color: var(--footer-bg);
     margin: -15px -35px;
-    margin-top: 30px;
+    margin-top: 50px;
     padding: 5px;
 }
 
@@ -285,6 +299,7 @@ footer a:active {
 @media screen and (max-width: 870px) {  /* drop-down menu */
     #nav-toggle {
         display: block;
+        color: var(--nav-bg);
     }
 
     #nav-menu {
@@ -306,16 +321,13 @@ footer a:active {
         border-radius: 10px;
     }
 
-    #nav-controls.active button {
+    #nav-controls.active button,
+    #nav-controls.active button:active {
         background-color: var(--nav-btn-hover);
     }
 
     #nav-controls.active button:hover {
         background-color: var(--nav-btn-darker);
-    }
-
-    #nav-controls.active button:active {
-        background-color: var(--nav-btn-hover);
     }
 
     #nav-menu.active li.desktop {
