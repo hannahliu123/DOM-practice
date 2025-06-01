@@ -11,7 +11,9 @@
     --nav-btn: #FFFFFF;
     --nav-btn-hover: #F5F5F5;
     --nav-btn-darker: #E9E9E9;
+    --toggle-color: #cfbf85;
     --nav-list-text: #163C5E;
+    --add-btn-hover: #E8E5E1;
     --link-hover: #3F6A91;
     --link-active: #7CA2C4;
     --remove-text-hover: #D17069;
@@ -33,13 +35,15 @@ body.dark-mode {
     --nav-btn: #F5F5F5;
     --nav-btn-hover: #DDDDDD;
     --nav-btn-darker: #BBBBBB;
+    --toggle-color: #073D6B;
     --nav-list-text: #F8F5F0;
+    --add-btn-hover: #0F3454;
     --link-hover: #7CA2C4;
     --link-active: #85AFD4;
     --remove-text-hover: #C94942;
     --remove-text-active: #913530;
-    --shape-color: #0E63AD;
-    --shape-active: #0B4C85;
+    --shape-color: #0B4C85;
+    --shape-active: #0E63AD;
     --points-0: #4A8739;
     --points-1: #54973F;
     --points-2: #63B24B;
@@ -101,6 +105,7 @@ body {
 
 #nav-toggle {
     display: none;
+    color: var(--toggle-color);
 }
 
 #nav-menu { /* stores links that jump to content */
@@ -167,7 +172,7 @@ textarea::placeholder {
 }
 
 #add-button:hover {
-    background-color: var();
+    background-color: var(--add-btn-hover);
 }
 
 #text-container p:hover {
@@ -299,7 +304,6 @@ footer a:active {
 @media screen and (max-width: 870px) {  /* drop-down menu */
     #nav-toggle {
         display: block;
-        color: var(--nav-bg);
     }
 
     #nav-menu {
@@ -340,9 +344,16 @@ footer a:active {
     }
 }
 
-@media screen and (max-width: 430px) {  /* mobile */
+@media screen and (max-width: 430px) {  /* mobile 430 */
     body {
-        padding: 5px 20px;
+        padding: 0px 20px;
+    }
+
+    #nav-menu.active {
+        padding: 70px 30px 20px 30px;
+        top: 7px;
+        right: 19px;
+        border-radius: 10px;
     }
 
     #char-count-input {
@@ -359,5 +370,9 @@ footer a:active {
 
     .reorder-items {    /* drag & drop doesn't work on mobile */
         display: none;
+    }
+
+    footer {
+        margin-top: 30px;
     }
 }
