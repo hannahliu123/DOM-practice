@@ -7,6 +7,8 @@ let paragraphs = JSON.parse(localStorage.getItem('paragraphs')) || [];
 
 // ========== Shapes Color Section ==========
 const colorContainer = document.getElementById('change-color');
+const shapes = document.querySelectorAll('.shape');
+let shapeState = JSON.parse(localStorage.getItem('shapes')) || [false, false, false];
 
 // ========== Character Counter ==========
 const charCountInput = document.getElementById('char-count-input');
@@ -51,7 +53,15 @@ function displayParagraphs() {
         addText.setAttribute('data-index', index);     // for removing elements later (set an index)
         addText.classList.add('paragraph');
         textContainer.append(addText);
-        addInput.value = '';
+    });
+
+    addInput.value = '';
+}
+
+function displayShapes() {
+    shapes.forEach(shape => {
+        if (shapeState[shape.dataset.index]) shape.classList.add('active');
+        else shape.classList.remove('active');
     });
 }
 
@@ -76,6 +86,7 @@ function updatePointsMessage() {
 // ========== Event Listeners ==========
 document.addEventListener('DOMContentLoaded', () => {
     displayParagraphs();
+    displayShapes();
 });
 
 addButton.addEventListener('click', addTextToContainer);    // passing in reference to function, not calling it, so no parenthases needed
@@ -84,7 +95,7 @@ addInput.addEventListener('keydown', (event) => {
 });
 
 textContainer.addEventListener('click', (event) => {
-    if (event.target.tagName === 'P') { // so you don't delete the div (container)
+    if (event.target.classList.contains('paragraph')) { // so you don't delete the div (container)
         // Remove item from local storage
         const indexRemove = event.target.dataset.index;
         paragraphs.splice(indexRemove, 1);
@@ -97,7 +108,10 @@ textContainer.addEventListener('click', (event) => {
 
 colorContainer.addEventListener('click', (event) => {
     if (event.target.classList.contains('shape')) {
-        event.target.classList.toggle('active');
+        shapeState[event.target.dataset.index] = !shapeState[event.target.dataset.index];
+        displayShapes();
+
+        localStorage.setItem('shapes', JSON.stringify(shapeState));
     }
 });
 
