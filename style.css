@@ -142,6 +142,7 @@ body {
 #add-button:hover,
 #text-container p:hover,
 .shape:hover,
+#save-button:hover, 
 .habit:hover,
 .habit input:hover,
 .habit label:hover,
@@ -171,7 +172,8 @@ textarea::placeholder {
     color: var(--text-color);
 }
 
-#add-button:hover {
+#add-button:hover,
+#save-button:hover {
     background-color: var(--add-btn-hover);
 }
 
@@ -215,6 +217,37 @@ textarea::placeholder {
 
 #char-count-input {
     width: 80%;
+}
+
+#char-count-display-container {
+    display: flex;
+    align-items: center;
+}
+
+#char-display {
+    flex-grow: 3;
+}
+
+#save-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-grow: 1;
+}
+
+#save-button {
+    width: 60px;
+    height: 30px;
+    text-align: center;
+}
+
+#saved-checkmark {
+    visibility: hidden;     /* still takes up space */
+    color: var(--points-2);
+}
+
+#saved-checkmark.active {
+    visibility: visible;
 }
 
 .habit {

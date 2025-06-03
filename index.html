@@ -49,7 +49,13 @@
             <h3>Character Counter</h3>
             <p>Type anything, and this program will display the number of characters you have used below.</p>
             <textarea placeholder="Enter Here" name="paragraph" id="char-count-input" rows="5" cols="70"></textarea>
-            <p id="char-display">Characters: 0</p>
+            <div id="char-count-display-container">
+                <p id="char-display">Characters: 0</p>
+                <div id="save-container">
+                    <button id="save-button">Save</button>
+                    <p id="saved-checkmark">✓</p>
+                </div>
+            </div>
         </section>
         <section id="habits-tracker">
             <h3>Daily Habits Tracker Checkboxes</h3>
@@ -116,6 +122,6 @@
         <footer>
             <p>© 2025 Hannah Liu. Licensed under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> • Version 1.0 • <a href="mailto:hannah.liu2010@gmail.com">Contact</a></p>
         </footer>
+        <script src="script.js"></script>
     </body>
-    <script src="script.js"></script>
 </html>

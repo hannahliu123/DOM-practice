@@ -13,6 +13,9 @@ let shapeState = JSON.parse(localStorage.getItem('shapes')) || [false, false, fa
 // ========== Character Counter ==========
 const charCountInput = document.getElementById('char-count-input');
 const charDisplay = document.getElementById('char-display');
+const saveButton = document.getElementById('save-button');
+const saveCheckmark = document.getElementById('saved-checkmark');
+let counterText = localStorage.getItem('counterText') || '';
 
 // ========== Habit Checkboxes ==========
 const checkboxContainer = document.getElementById('checkboxes');
@@ -65,6 +68,11 @@ function displayShapes() {
     });
 }
 
+function displayCounterText() {
+    charCountInput.textContent = counterText;
+    charDisplay.textContent = 'Characters: ' + charCountInput.value.length;
+}
+
 function updatePointsMessage() {
     pointsMessage.classList.remove('zero', 'one', 'two', 'three');
 
@@ -87,6 +95,7 @@ function updatePointsMessage() {
 document.addEventListener('DOMContentLoaded', () => {
     displayParagraphs();
     displayShapes();
+    displayCounterText();
 });
 
 addButton.addEventListener('click', addTextToContainer);    // passing in reference to function, not calling it, so no parenthases needed
@@ -117,6 +126,17 @@ colorContainer.addEventListener('click', (event) => {
 
 charCountInput.addEventListener('input', () => {
     charDisplay.textContent = 'Characters: ' + charCountInput.value.length;
+});
+
+saveButton.addEventListener('click', () => {
+    counterText = charCountInput.value;
+    localStorage.setItem('counterText', counterText);
+    saveCheckmark.classList.add('active');
+
+    // delay the following action by 1000 ms (1 sec)
+    setTimeout(() => {
+        saveCheckmark.classList.remove('active');
+    }, '1000');
 });
 
 let totalPoints = 0;
