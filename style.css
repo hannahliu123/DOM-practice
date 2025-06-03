@@ -311,9 +311,8 @@ textarea::placeholder {
 }
 
 .item {
-    margin: 5px;
-    padding: 6px;
-    width: 100px;
+    padding: 11px;
+    width: 110px;
 }
 
 footer {

@@ -32,6 +32,7 @@ let totalPoints = parseInt(localStorage.getItem('points')) || 0;
 const items = document.querySelectorAll('div.item');
 const itemBank = document.getElementById('item-bank');
 const dropLine = document.getElementById('drop-line');
+let itemsOrder = JSON.parse(localStorage.getItem('itemOrder')) || [];
 
 // ========== Navagation Bar ==========
 const navMenuContainer = document.getElementById('nav-menu');
@@ -108,12 +109,22 @@ function updatePoints() {
     }
 }
 
+function displayItemsOrder() {
+    itemsOrder.forEach((id) => {
+        const item = document.getElementById(id);
+        itemBank.remove(item);
+        dropLine.append(item);
+    });
+}
+
+
 // ========== Event Listeners ==========
 document.addEventListener('DOMContentLoaded', () => {
     displayParagraphs();
     displayShapes();
     displayCounterText();
     displayCheckboxes();
+    displayItemsOrder();
 });
 
 addButton.addEventListener('click', addTextToContainer);    // passing in reference to function, not calling it, so no parenthases needed
@@ -200,6 +211,7 @@ items.forEach(item => { // add an event listener that stores an item in a variab
             }
             
             draggedItem = null;
+            localStorage.setItem('itemOrder', JSON.stringify(itemsOrder));
         }
     });
 });
