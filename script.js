@@ -152,6 +152,16 @@ navToggle.addEventListener('click', () => {
     navButtonsContainer.classList.toggle('active');
 });
 
+document.addEventListener('click', (event) => {
+    const menuActive = navMenuContainer.classList.contains('active');
+    const noClick = event.target.classList.contains('no-click');
+
+    if (menuActive && !noClick) {
+        navMenuContainer.classList.toggle('active');
+        navButtonsContainer.classList.toggle('active');
+    }
+});
+
 themeToggle.addEventListener('click', (event) => {
         document.body.classList.toggle('dark-mode');
     if (event.target.textContent === '🔆') {
