@@ -2,6 +2,8 @@
 const addInput = document.getElementById('text-input');
 const addButton = document.getElementById('add-button');
 const textContainer = document.getElementById('text-container');
+// If there is data in "paragraphs", retrieve it. Otherwise, initialize an empty array
+let paragraphs = JSON.parse(localStorage.getItem('paragraphs')) || [];
 
 // ========== Shapes Color Section ==========
 const colorContainer = document.getElementById('change-color');
@@ -32,10 +34,25 @@ const themeToggle = document.getElementById('theme-toggle');
 
 // ========== Functions ==========
 function addTextToContainer() {
-    const addText = document.createElement('p');
-    addText.textContent = addInput.value;
-    textContainer.append(addText);
-    addInput.value = '';
+    // Add item to local storage
+    if (addInput.value !== '') {    // not empty
+        paragraphs.push(addInput.value);
+        localStorage.setItem('paragraphs', JSON.stringify(paragraphs));
+
+        displayParagraphs();    // Add elements to page (update everything)    
+    }
+}
+
+function displayParagraphs() {
+    textContainer.textContent = '';
+    paragraphs.forEach((item, index) => {
+        const addText = document.createElement('p');
+        addText.textContent = item;
+        addText.setAttribute('data-index', index);     // for removing elements later (set an index)
+        addText.classList.add('paragraph');
+        textContainer.append(addText);
+        addInput.value = '';
+    });
 }
 
 function updatePointsMessage() {
@@ -57,6 +74,10 @@ function updatePointsMessage() {
 }
 
 // ========== Event Listeners ==========
+document.addEventListener('DOMContentLoaded', () => {
+    displayParagraphs();
+});
+
 addButton.addEventListener('click', addTextToContainer);    // passing in reference to function, not calling it, so no parenthases needed
 addInput.addEventListener('keydown', (event) => {
     if (event.key === 'Enter') addTextToContainer();
@@ -64,7 +85,13 @@ addInput.addEventListener('keydown', (event) => {
 
 textContainer.addEventListener('click', (event) => {
     if (event.target.tagName === 'P') { // so you don't delete the div (container)
-        event.target.remove();
+        // Remove item from local storage
+        const indexRemove = event.target.dataset.index;
+        paragraphs.splice(indexRemove, 1);
+        localStorage.setItem('paragraphs', JSON.stringify(paragraphs));
+
+        // Remove item from user's view
+        displayParagraphs();
     }
 });
 
