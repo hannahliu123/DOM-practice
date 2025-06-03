@@ -19,11 +19,14 @@ let counterText = localStorage.getItem('counterText') || '';
 
 // ========== Habit Checkboxes ==========
 const checkboxContainer = document.getElementById('checkboxes');
+const allCheckboxes = document.querySelectorAll('.checkbox');
 const sleepCheckbox = document.getElementById('get-sleep');
 const sleepHoursContainer = document.getElementById('sleep-hours-container');
 const sleepHoursInput = document.getElementById('sleep-hours-input');
 const pointsDisplay = document.getElementById('habits-points');
 const pointsMessage = document.getElementById('points-message');
+let checkboxState = JSON.parse(localStorage.getItem('checkboxStates')) || [false, false, false, false, false, false, false];
+let totalPoints = parseInt(localStorage.getItem('points')) || 0;
 
 // ========== Rearrange Items ==========
 const items = document.querySelectorAll('div.item');
@@ -62,8 +65,8 @@ function displayParagraphs() {
 }
 
 function displayShapes() {
-    shapes.forEach(shape => {
-        if (shapeState[shape.dataset.index]) shape.classList.add('active');
+    shapes.forEach((shape, index) => {
+        if (shapeState[index]) shape.classList.add('active');
         else shape.classList.remove('active');
     });
 }
@@ -73,7 +76,21 @@ function displayCounterText() {
     charDisplay.textContent = 'Characters: ' + charCountInput.value.length;
 }
 
-function updatePointsMessage() {
+function displayCheckboxes() {
+    allCheckboxes.forEach((box, index) => {
+        if (checkboxState[index]) {
+            box.checked = true;
+        } else box.checked = false;
+    });
+
+    updatePoints();
+}
+
+function updatePoints() {
+    // update points display
+    if (sleepCheckbox.checked) pointsDisplay.textContent = totalPoints + parseInt(sleepHoursInput.value);
+    else pointsDisplay.textContent = totalPoints;
+
     pointsMessage.classList.remove('zero', 'one', 'two', 'three');
 
     if (totalPoints >= 70) {
@@ -96,6 +113,7 @@ document.addEventListener('DOMContentLoaded', () => {
     displayParagraphs();
     displayShapes();
     displayCounterText();
+    displayCheckboxes();
 });
 
 addButton.addEventListener('click', addTextToContainer);    // passing in reference to function, not calling it, so no parenthases needed
@@ -139,21 +157,21 @@ saveButton.addEventListener('click', () => {
     }, '1000');
 });
 
-let totalPoints = 0;
 checkboxContainer.addEventListener('change', (event) => {
     const checkbox = event.target;
     if (checkbox.checked) {
         totalPoints += parseInt(checkbox.dataset.points); // Convert string into integer
         if (checkbox.id === 'get-sleep') sleepHoursContainer.style.display = 'block';
+        checkboxState[checkbox.dataset.index] = true;
     } else if (checkbox.type === 'checkbox') {   // not number input
         totalPoints -= parseInt(checkbox.dataset.points); // Convert string into integer
         if (checkbox.id === 'get-sleep') sleepHoursContainer.style.display = 'none';
+        checkboxState[checkbox.dataset.index] = false;
     }
     
-    // update points display
-    if (sleepCheckbox.checked) pointsDisplay.textContent = totalPoints + parseInt(sleepHoursInput.value);
-    else pointsDisplay.textContent = totalPoints;
-    updatePointsMessage();
+    updatePoints();
+    localStorage.setItem('checkboxStates', JSON.stringify(checkboxState));
+    localStorage.setItem('points', totalPoints);
 });
 
 let draggedItem = null;
