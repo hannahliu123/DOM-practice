@@ -39,6 +39,7 @@ const navMenuContainer = document.getElementById('nav-menu');
 const navButtonsContainer = document.getElementById('nav-controls');
 const navToggle = document.getElementById('nav-toggle');
 const themeToggle = document.getElementById('theme-toggle');
+let theme = localStorage.getItem('theme') || 'light';   // either 'dark' or 'light'
 
 
 // ========== Functions ==========
@@ -119,6 +120,16 @@ function displayItemsOrder() {
     });
 }
 
+function setTheme() {
+    if (theme === 'light') {
+        document.body.classList.remove('dark-mode');
+        themeToggle.textContent = '🔆';
+    } else if (theme === 'dark') {
+        document.body.classList.add('dark-mode');
+        themeToggle.textContent = '⚫';
+    }
+}
+
 
 // ========== Event Listeners ==========
 document.addEventListener('DOMContentLoaded', () => {
@@ -127,6 +138,7 @@ document.addEventListener('DOMContentLoaded', () => {
     displayCounterText();
     displayCheckboxes();
     displayItemsOrder();
+    setTheme();
 });
 
 addButton.addEventListener('click', addTextToContainer);    // passing in reference to function, not calling it, so no parenthases needed
@@ -265,6 +277,19 @@ itemBank.addEventListener('drop', (event) => {
     }
 });
 
+themeToggle.addEventListener('click', (event) => {
+    document.body.classList.toggle('dark-mode');
+    if (event.target.textContent === '🔆') {
+        event.target.textContent = '⚫';
+        theme = 'dark';
+    } else {
+        event.target.textContent = '🔆';
+        theme = 'light';
+    }
+
+    localStorage.setItem('theme', theme);
+});
+
 navToggle.addEventListener('click', () => {
     navMenuContainer.classList.toggle('active');
     navButtonsContainer.classList.toggle('active');
@@ -278,11 +303,4 @@ document.addEventListener('click', (event) => {
         navMenuContainer.classList.toggle('active');
         navButtonsContainer.classList.toggle('active');
     }
-});
-
-themeToggle.addEventListener('click', (event) => {
-        document.body.classList.toggle('dark-mode');
-    if (event.target.textContent === '🔆') {
-        event.target.textContent = '⚫';
-    } else event.target.textContent = '🔆';
 });
