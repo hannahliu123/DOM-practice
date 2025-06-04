@@ -11,7 +11,7 @@
     --nav-btn: #FFFFFF;
     --nav-btn-hover: #F5F5F5;
     --nav-btn-darker: #E9E9E9;
-    --toggle-color: #cfbf85;
+    --toggle-color: #F2BE00;
     --nav-list-text: #163C5E;
     --add-btn-hover: #E8E5E1;
     --link-hover: #3F6A91;
@@ -43,7 +43,7 @@ body.dark-mode {
     --remove-text-hover: #C94942;
     --remove-text-active: #913530;
     --shape-color: #0B4C85;
-    --shape-active: #0E63AD;
+    --shape-active: #3274AE;
     --points-0: #4A8739;
     --points-1: #54973F;
     --points-2: #63B24B;
@@ -67,7 +67,7 @@ body {
     align-items: center;
     background-color: var(--nav-bg);
     padding: 20px 30px;
-    margin: 0 -35px;
+    margin: 0 -35px 0 -32px;
     top: 0;
 }
 
