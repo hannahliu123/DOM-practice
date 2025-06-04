@@ -382,10 +382,11 @@ footer a:active {
     }
 
     #nav-menu.active {
-        padding: 70px 30px 20px 30px;
+        padding-top: 70px;
         top: 7px;
         right: 19px;
         border-radius: 10px;
+
     }
 
     #char-count-input {

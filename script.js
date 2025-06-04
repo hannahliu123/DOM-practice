@@ -3,12 +3,12 @@ const addInput = document.getElementById('text-input');
 const addButton = document.getElementById('add-button');
 const textContainer = document.getElementById('text-container');
 // If there is data in "paragraphs", retrieve it. Otherwise, initialize an empty array
-let paragraphs = JSON.parse(localStorage.getItem('paragraphs')) || [];
+let paragraphs = localStorage.getItem('paragraphs')? JSON.parse(localStorage.getItem('paragraphs')) : [];
 
 // ========== Shapes Color Section ==========
 const colorContainer = document.getElementById('change-color');
 const shapes = document.querySelectorAll('.shape');
-let shapeState = JSON.parse(localStorage.getItem('shapes')) || [false, false, false];
+let shapeState = localStorage.getItem('shapes')? JSON.parse(localStorage.getItem('shapes')) : [false, false, false];
 
 // ========== Character Counter ==========
 const charCountInput = document.getElementById('char-count-input');
@@ -25,14 +25,14 @@ const sleepHoursContainer = document.getElementById('sleep-hours-container');
 const sleepHoursInput = document.getElementById('sleep-hours-input');
 const pointsDisplay = document.getElementById('habits-points');
 const pointsMessage = document.getElementById('points-message');
-let checkboxState = JSON.parse(localStorage.getItem('checkboxStates')) || [false, false, false, false, false, false, false];
-let totalPoints = parseInt(localStorage.getItem('points')) || 0;
+let checkboxState = localStorage.getItem('checkboxStates')? JSON.parse(localStorage.getItem('checkboxStates')) : [false, false, false, false, false, false, false];
+let totalPoints = localStorage.getItem('points')? parseInt(localStorage.getItem('points')) : 0;
 
 // ========== Rearrange Items ==========
 const items = document.querySelectorAll('div.item');
 const itemBank = document.getElementById('item-bank');
 const dropLine = document.getElementById('drop-line');
-let itemsOrder = JSON.parse(localStorage.getItem('itemOrder')) || [];
+let itemsOrder = localStorage.getItem('itemOrder')? JSON.parse(localStorage.getItem('itemOrder')) : [];
 
 // ========== Navagation Bar ==========
 const navMenuContainer = document.getElementById('nav-menu');
@@ -81,6 +81,7 @@ function displayCheckboxes() {
     allCheckboxes.forEach((box, index) => {
         if (checkboxState[index]) {
             box.checked = true;
+            if (box.id === 'get-sleep') sleepHoursContainer.style.display = 'block';
         } else box.checked = false;
     });
 
@@ -110,9 +111,10 @@ function updatePoints() {
 }
 
 function displayItemsOrder() {
-    itemsOrder.forEach((id) => {
+    itemsOrder.forEach(id => {
         const item = document.getElementById(id);
-        itemBank.remove(item);
+        itemBank.removeChild(item);   // NOT the same as just remove (i learned the hard way)
+        item.classList.add('active');
         dropLine.append(item);
     });
 }
@@ -209,9 +211,20 @@ items.forEach(item => { // add an event listener that stores an item in a variab
             } else {    // mouse was below the middle of item
                 item.parentNode.insertBefore(draggedItem, item.nextSibling);
             }
+
+            // Determine which items are in the dorp line/area
+            if (item.parentElement.id === 'drop-line') {
+                draggedItem.classList.add('active');
+            } else if (item.parentElement.id === 'item-bank') {
+                draggedItem.classList.remove('active');
+            }
             
-            draggedItem = null;
+            // Update the order of items in the item bank and save it
+            let activeItems = document.querySelectorAll('.item.active');
+            itemsOrder = Array.from(activeItems, activeItem => activeItem.id);
             localStorage.setItem('itemOrder', JSON.stringify(itemsOrder));
+
+            draggedItem = null;
         }
     });
 });
@@ -226,6 +239,13 @@ dropLine.addEventListener('drop', (event) => {
     event.preventDefault();     // not needed in this situation, but default is to open the dragged file/element (like dragging a file into a browser)
     if (draggedItem) {  // if there is a valid dragged item (not null)
         dropLine.append(draggedItem);
+        draggedItem.classList.add('active');
+
+        // save the order
+        let activeItems = document.querySelectorAll('.item.active');
+        itemsOrder = Array.from(activeItems, activeItem => activeItem.id);
+        localStorage.setItem('itemOrder', JSON.stringify(itemsOrder));
+
         draggedItem = null;     // just in case
     }
 });
@@ -234,6 +254,13 @@ itemBank.addEventListener('drop', (event) => {
     event.preventDefault();
     if (draggedItem) {
         itemBank.append(draggedItem);
+        draggedItem.classList.remove('active');
+
+        // save the order
+        let activeItems = document.querySelectorAll('.item.active');
+        itemsOrder = Array.from(activeItems, activeItem => activeItem.id);
+        localStorage.setItem('itemOrder', JSON.stringify(itemsOrder));
+
         draggedItem = null;
     }
 });
